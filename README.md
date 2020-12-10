@@ -13,7 +13,7 @@ This is a repo designed to host a timed quiz relating to basic coding knowledge.
 
 ## Preview Image
 
-<img src>
+<img src=''>
 
 ## Deployed Link
 
