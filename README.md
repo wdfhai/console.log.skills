@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is a repo designed to host a timed quiz relating to basic coding knowledge. It is designed to test a new or junior coder's knowledge relating to basics such as HTML, CSS, JavaScript, APIs, etc.
+This is a repo designed to host a timed quiz relating to basic coding knowledge. It is designed to test a new or junior coder's knowledge of foundation topics such as HTML, CSS, JavaScript, APIs, etc.
 
 ## Features
 
@@ -19,4 +19,4 @@ This is a repo designed to host a timed quiz relating to basic coding knowledge.
 
 ## Summary
 
-Thanks for visiting my repository for my coding quiz. This required in-depth knowledge of event listeners and timed loops, on top of HTML, CSS and JS skills. I thoroughly enjoyed creating this, and I hope you enjoy taking it or even analyzing it. Cheers!
+Thanks for visiting my repository for my coding quiz. This required in-depth knowledge of event listeners and timed loops, on top of HTML, CSS and JS skills. I thoroughly enjoyed creating this quiz, and I hope you enjoy taking it or even analyzing it. Cheers!
