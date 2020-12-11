@@ -10,20 +10,23 @@ body {
 #page {
   background-color: gainsboro;
   min-height: 100vh;
+  padding: 0px;
 }
 
 #heading {
   background-color: teal;
   color: aliceblue;
+  padding: 15px;
 }
 
 #subheading {
   background-color: powderblue;
+  padding: 15px;
 }
 
 h1 {
   text-align: center;
-  font-size: 40px;
+  font-size: 35px;
   text-decoration: underline;
 }
 
@@ -31,20 +34,34 @@ h2 {
   text-align: center;
   font-size: 30px;
 }
-#instructions {
+#intro {
+  padding: 30px;
+  font-size: 20px;
+}
+
+#timer {
+  float: right;
+}
+#timer .card-body {
+  background-color: black;
   text-align: center;
+  color: white;
+  font-size: 20px;
+  font-weight: bolder;
+  padding: 5px;
 }
 
 #card {
   padding: 0;
 }
-.card-body {
+#question .card-body {
   background-color: blanchedalmond;
   margin: 0;
 }
 #question {
-  padding: 30px 12px 30px 12px;
+  padding: 20px 30px 20px 30px;
   background-color: gainsboro;
+  margin: 0px;
 }
 
 #qNumber {
@@ -65,6 +82,7 @@ h2 {
 #button3,
 #button4 {
   margin: 10px;
+  clear: both;
 }
 
 footer {
