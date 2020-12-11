@@ -2,12 +2,19 @@
   font-family: "Montserrat", sans-serif;
 }
 
+body {
+  min-height: 100vh;
+  padding: 0;
+}
+
 #page {
   background-color: gainsboro;
+  min-height: 100vh;
 }
 
 #heading {
-  background-color: plum;
+  background-color: teal;
+  color: aliceblue;
 }
 
 #subheading {
@@ -27,8 +34,46 @@ h2 {
 #instructions {
   text-align: center;
 }
+
+#card {
+  padding: 0;
+}
+.card-body {
+  background-color: blanchedalmond;
+  margin: 0;
+}
+#question {
+  padding: 30px 12px 30px 12px;
+  background-color: gainsboro;
+}
+
+#qNumber {
+  font-weight: 600;
+  font-size: 40px;
+}
+
+#qContent {
+  font-weight: 500px;
+  font-size: 30px;
+}
+#options {
+  flex-wrap: wrap;
+}
+
+#button1,
+#button2,
+#button3,
+#button4 {
+  margin: 10px;
+}
+
 footer {
   background-color: teal;
+  color: aliceblue;
   text-align: center;
   text-decoration: wavy;
+  position: fixed-bottom;
+}
+#footText {
+  margin: 0;
 }
