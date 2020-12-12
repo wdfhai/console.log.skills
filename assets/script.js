@@ -23,3 +23,35 @@ var answers = [
     "make",
     "<script>"
 ]
+
+var clock = document.getElementById("countdown");
+
+var questionNumber = document.getElementById("qNumber");
+var questionContent = document.getElementById("qContent");
+var q = 1;
+var i = 0;
+
+function nextQuestion() {
+    questionNumber.innerHTML = "Question " + q;
+    q++;
+    questionContent.innerHTML = questions[i];
+    i++;
+
+}
+
+function countdown() {
+    var timeleft = 10;
+    var timerInterval = setInterval(function() {
+        timeleft--;
+        clock.textContent = timeleft;
+
+        if (timeleft === 0) {
+            timeleft = timeleft + 10;
+            nextQuestion();
+        }
+    },1000);
+}
+
+var begin = document.getElementById("startButton");
+begin.addEventListener('click', countdown);
+begin.addEventListener('click', nextQuestion);
