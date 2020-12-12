@@ -66,12 +66,12 @@ h2 {
 
 #qNumber {
   font-weight: 600;
-  font-size: 40px;
+  font-size: 25px;
 }
 
 #qContent {
   font-weight: 500px;
-  font-size: 30px;
+  font-size: 35px;
 }
 #options {
   flex-wrap: wrap;
