@@ -21,37 +21,58 @@ var answers = [
     "1",
     "0",
     "make",
-    "<script>"
+    "script"
 ]
+
+var incorrectOne = ["body", "header", "section"];
+var incorrectTwo = [".id", "$id", "&id"];
+var incorrectThree = ["div", "p", "h1"];
+var incorrectFour = ["section", "footer","header"];
+var incorrectFive = ["padding", "border", "content"];
+var incorrectSix = ["addEventListener", "getElementById", "array.join"];
+var incorrectSeven = ["0", "0.5", "0.99999"];
+var incorrectEight = ["1", "2", "1.1"];
+var incorrectNine = ["var", "let", "const"];
+var incorrectTen = ["style", "interact", "java"];
+
 
 var clock = document.getElementById("countdown");
 
 var questionNumber = document.getElementById("qNumber");
 var questionContent = document.getElementById("qContent");
-var q = 1;
-var i = 0;
 
-function nextQuestion() {
-    questionNumber.innerHTML = "Question " + q;
-    q++;
-    questionContent.innerHTML = questions[i];
-    i++;
 
-}
+
+    var q = 1;
+    var i = 0;
+
+    // console.log(randomButton.innerHTML);
+
+    
+function nextQuestionAndAnswer() {
+        questionNumber.innerHTML = "Question " + q;
+        q++;
+        questionContent.innerHTML = questions[i];
+        var randomButton = document.getElementById(Math.floor(1+(Math.random() * 4)));
+        randomButton.innerHTML = answers[i];
+        i++;
+    };
+
 
 function countdown() {
     var timeleft = 10;
-    var timerInterval = setInterval(function() {
+    setInterval(function() {
         timeleft--;
         clock.textContent = timeleft;
 
         if (timeleft === 0) {
             timeleft = timeleft + 10;
-            nextQuestion();
+            nextQuestionAndAnswer();
         }
     },1000);
-}
+};
 
 var begin = document.getElementById("startButton");
 begin.addEventListener('click', countdown);
-begin.addEventListener('click', nextQuestion);
+// begin.addEventListener('click', next);
+begin.addEventListener('click', nextQuestionAndAnswer);
