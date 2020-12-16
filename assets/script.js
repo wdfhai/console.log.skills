@@ -31,6 +31,7 @@ var b1 = document.getElementById("1");
 var b2 = document.getElementById("2");
 var b3 = document.getElementById("3");
 var b4 = document.getElementById("4");
+var score = 0;
 
 
 var array = [0, 1, 2, 3];
@@ -49,7 +50,7 @@ var q = 1;
 var i = 0;
 let v = 1;
 
-function nextQuestionAndAnswer() {
+function nextQuestion() {
         questionNumber.innerHTML = "Question " + q;
         q++;
         questionContent.innerHTML = questions[i];
@@ -69,9 +70,8 @@ function assignChoices () {
     v++;
 };
 
-
+var timeLeft = 6;
 function countdown() {
-    var timeLeft = 6;
     var timerDisplay = setInterval(function() {
         timeLeft--;
         clock.textContent = timeLeft;
@@ -82,13 +82,22 @@ function countdown() {
             clearInterval(timerDisplay);
         };
     },1000);
-
-
 };
+
 
 function quizOver() {
     questionNumber.innerHTML = "Quiz Over!";
-    questionContent.innerHTML = "Your score is out of 10";
+    questionContent.innerHTML = "Your score is "+ score +" out of 10";
+};
+
+function disableStart() { 
+    startButton.disabled = true;
+};
+
+function next() {
+    shuffleArray();
+    nextQuestion();
+    assignChoices();
 };
 
 
@@ -98,20 +107,22 @@ choices.addEventListener('click', (event) => {
     if (!isButton) {
     return;
     }
-    console.log("Button pressed");
-    console.log(event.target.id);
-})
-
-function disableStart() { 
-    startButton.disabled = true;
-};
-
-function next() {
-    countdown();
-    shuffleArray();
-    nextQuestionAndAnswer();
-    assignChoices();
-};
+    var buttonPressed = event.target.innerHTML;
+    console.log(buttonPressed);
+    if (buttonPressed === "#id"){
+        score++;
+        console.log("correct!")
+        console.log(score);
+        next();
+    } else {
+        timeLeft--;
+        console.log("incorrect");
+        console.log(timeLeft);
+        next();
+    };
+}
+);
 
 startButton.addEventListener('click', disableStart);
+startButton.addEventListener('click', countdown);
 startButton.addEventListener('click', next);
