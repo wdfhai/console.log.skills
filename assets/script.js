@@ -21,6 +21,7 @@ var answersSeven = ["0", "0.5", "0.99999", "1"];
 var answersEight = ["1", "2", "1.1", "0",];
 var answersNine = ["var", "make", "let", "const"];
 var answersTen = ["style", "interact", "java", "script"];
+var answers = [answersOne, answersTwo, answersThree, answersFour, answersFive, answersSix, answersSeven, answersEight, answersNine, answersTen];
 var clock = document.getElementById("countdown");
 var questionNumber = document.getElementById("qNumber");
 var questionContent = document.getElementById("qContent");
@@ -30,12 +31,9 @@ var b1 = document.getElementById("1");
 var b2 = document.getElementById("2");
 var b3 = document.getElementById("3");
 var b4 = document.getElementById("4");
-console.log(b1.innerHTML);
-console.log(b2.innerHTML);
-console.log(b3.innerHTML);
-console.log(b4.innerHTML);
 
-var array = [1, 2, 3, 4];
+
+var array = [0, 1, 2, 3];
 // Following function 'shuffleArray' is a modification or the Fisher-Yates algorithm, sometimes attributed as the Durstenfeld algorithm. 
 // I used this function as there is no built in shuffle function for an array in Javascript.
 // Fisher Yates (Knuth) algorithm link = https://github.com/Daplie/knuth-shuffle
@@ -49,6 +47,7 @@ function shuffleArray() {
 
 var q = 1;
 var i = 0;
+let v = 1;
 
 function nextQuestionAndAnswer() {
         questionNumber.innerHTML = "Question " + q;
@@ -58,31 +57,61 @@ function nextQuestionAndAnswer() {
 };
 
 
-
-
 function assignChoices () {
-
-}
-
+    var ai = array[0];
+    var bi = array[1];
+    var ci = array[2];
+    var di = array[3];
+    b1.innerHTML = answers[v][ai];
+    b2.innerHTML = answers[v][bi];
+    b3.innerHTML = answers[v][ci];
+    b4.innerHTML = answers[v][di];
+    v++;
+};
 
 
 function countdown() {
-    var timeleft = 10;
-    setInterval(function() {
-        timeleft--;
-        clock.textContent = timeleft;
+    var timeLeft = 6;
+    var timerDisplay = setInterval(function() {
+        timeLeft--;
+        clock.textContent = timeLeft;
 
-        if (timeleft === 0) {
-            timeleft = timeleft + 10;
-            nextQuestionAndAnswer();
-        }
+        if (timeLeft === 0) {
+            clock.textContent = "Time's Up!";
+            quizOver();
+            clearInterval(timerDisplay);
+        };
     },1000);
+
+
 };
+
+function quizOver() {
+    questionNumber.innerHTML = "Quiz Over!";
+    questionContent.innerHTML = "Your score is out of 10";
+};
+
+
+var choices = document.getElementById('choices');
+choices.addEventListener('click', (event) => {
+    var isButton = event.target.nodeName === "BUTTON";
+    if (!isButton) {
+    return;
+    }
+    console.log("Button pressed");
+    console.log(event.target.id);
+})
 
 function disableStart() { 
     startButton.disabled = true;
 };
 
-startButton.addEventListener('click', countdown);
-startButton.addEventListener('click', nextQuestionAndAnswer);
+function next() {
+    countdown();
+    shuffleArray();
+    nextQuestionAndAnswer();
+    assignChoices();
+};
+
 startButton.addEventListener('click', disableStart);
+startButton.addEventListener('click', next);
