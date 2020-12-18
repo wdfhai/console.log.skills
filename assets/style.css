@@ -39,6 +39,10 @@ h2 {
   font-size: 20px;
 }
 
+#startButton:disabled {
+  background-color: grey;
+}
+
 #timer {
   float: right;
 }
@@ -77,12 +81,18 @@ h2 {
   flex-wrap: wrap;
 }
 
-#button1,
-#button2,
-#button3,
-#button4 {
+.btn-lg {
   margin: 10px;
   clear: both;
+}
+
+.btn-lg:disabled {
+  background-color: grey;
+}
+
+#highScores {
+  background-color: lightsteelblue;
+  padding: 20px;
 }
 
 footer {
