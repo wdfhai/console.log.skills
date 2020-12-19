@@ -6,9 +6,9 @@ This is a repo designed to host a timed quiz relating to basic coding knowledge.
 
 ## Features
 
-- This is a timed quiz, in which you get 10 seconds to answer each question.
+- This is a timed quiz, in which you get 60 seconds to answer all the question.
 - If the timer runs out, the questions will be marked as incorrect.
-- If a question is answered incorrectly, the user will be penalized by 1 second for the next question. This penalization will continue for each subsequent incorrect answer.
+- If a question is answered incorrectly, the user will be penalized by 3 seconds. This penalization will continue for each subsequent incorrect answer.
 - Follow the prompts to take the quiz and keep an eye on that timer. Good luck!
 
 ## Preview Image
@@ -16,6 +16,8 @@ This is a repo designed to host a timed quiz relating to basic coding knowledge.
 <img src=''>
 
 ## Deployed Link
+
+https://wdfhai.github.io/console.log.skills/
 
 ## Summary
 
