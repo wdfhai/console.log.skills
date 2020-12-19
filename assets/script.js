@@ -37,6 +37,11 @@ var b4 = document.getElementById("4");
 var options = document.getElementById("options");
 var score = 0;
 var highScores = document.getElementById("highScores");
+var newInitials = document.getElementById("initials");
+console.log(newInitials);
+var newHighScores = document.getElementById("hScores");
+console.log(newHighScores);
+var initials = "";
 
 var array = [0,1,2,3];
 // Following function 'shuffleArray' is a modification or the Fisher-Yates algorithm, sometimes attributed as the Durstenfeld algorithm. 
@@ -56,7 +61,6 @@ let v = 0;
 
 function nextQuestion() {
         questionNumber.innerHTML = "Question " + q;
-        // q++;
         questionContent.innerHTML = questions[i];
         i++;
 };
@@ -85,7 +89,6 @@ function countdown() {
             clearInterval(timerDisplay);
         } else if (questionNumber.innerHTML === "Quiz Over!"){
             clock.textContent = "You finished early!";
-            // quizOver();
             clearInterval(timerDisplay);
         };  
     },1000);
@@ -136,6 +139,7 @@ function quizOver() {
     options.style.display = "none";
     highScores.style.display = "block";
     getInitials();
+    writeHighScore();
 };
 
 function disableStart() { 
@@ -148,14 +152,25 @@ function enableButtons() {
 };
 
 function getInitials(){
-    var initials = prompt("Enter Your Initials.");
-    if (initials.length <= 2){
-        alert("Thanks.")
+    initials = prompt("Enter Your Initials.");
+    if (initials.length === 2){
+        alert("Thanks.");
         console.log(initials);
     } else {
         prompt("Please enter 1 or 2 characters.");
         getInitials();
     };
+};
+
+function writeHighScore (){
+let pInitials = document.createElement("p");
+pInitials.innerHTML = initials;
+console.log(initials);
+newInitials.appendChild(pInitials);
+
+let pHighScore = document.createElement("p");
+pHighScore.innerHTML = score;
+newHighScores.appendChild(pHighScore);
 };
 
 startButton.addEventListener('click', disableStart);
