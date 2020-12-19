@@ -21,4 +21,8 @@ https://wdfhai.github.io/console.log.skills/
 
 ## Summary
 
-Thanks for visiting my repository for my coding quiz. This required in-depth knowledge of event listeners and timed loops, on top of HTML, CSS and JS skills. I thoroughly enjoyed creating this quiz, and I hope you enjoy taking it or even analyzing it. Cheers!
+Thanks for visiting my repository for my coding quiz. This required in-depth knowledge of event listeners, nested functions and timed loops, on top of HTML, CSS and JS skills. I thoroughly enjoyed creating this quiz, and I hope you enjoy taking it or even analyzing it. Cheers!
+
+### Note
+
+Since JavaScript has no shuffle function for Arrays, I have modified a third party algorithm called the Fisher-Yates Algorithm to perform the same function. Please find more details in the script file along with URLs to my sources. All credit goes to the original creators.
