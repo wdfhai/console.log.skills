@@ -23,6 +23,7 @@ var answersNine = ["var", "make", "let", "const"];
 var answersTen = ["style", "interact", "java", "script"];
 var correctAnswers = ["position", "#id", "img", "div", "margin", "firstName:John", "1", "0", "make", "script"];
 var answers = [answersOne, answersTwo, answersThree, answersFour, answersFive, answersSix, answersSeven, answersEight, answersNine, answersTen];
+
 var clock = document.getElementById("countdown");
 var questionNumber = document.getElementById("qNumber");
 var questionContent = document.getElementById("qContent");
@@ -55,7 +56,7 @@ let v = 0;
 
 function nextQuestion() {
         questionNumber.innerHTML = "Question " + q;
-        q++;
+        // q++;
         questionContent.innerHTML = questions[i];
         i++;
 };
@@ -78,12 +79,15 @@ function countdown() {
     var timerDisplay = setInterval(function() {
         timeLeft--;
         clock.textContent = timeLeft;
-
         if (timeLeft === 0) {
             clock.textContent = "Time's Up!";
             quizOver();
             clearInterval(timerDisplay);
-        };
+        } else if (questionNumber.innerHTML === "Quiz Over!"){
+            clock.textContent = "You finished early!";
+            // quizOver();
+            clearInterval(timerDisplay);
+        };  
     },1000);
 };
 
@@ -102,16 +106,26 @@ choices.addEventListener('click', (event) => {
     return;
     }
     var buttonPressed = event.target.innerHTML;
-    // for (c=0;c <= 9; c++){
-    if (correctAnswers.includes(buttonPressed)){
-        score++;
-        console.log(score);
-        next();
-    } else {
-        timeLeft = timeLeft - 3;
-        next();
-    };
-// } quizOver();
+    if (q < 10){
+        if (correctAnswers.includes(buttonPressed)){
+            score++;
+            console.log(score);
+            q++;
+            next();
+            } else {
+            timeLeft = timeLeft - 3;
+            q++;
+            next();
+            };
+        } else {
+            if (correctAnswers.includes(buttonPressed)){
+                score++;
+                console.log(score);
+                } else {
+                timeLeft = timeLeft - 3;
+                };
+    quizOver();
+}
 }
 );
 
