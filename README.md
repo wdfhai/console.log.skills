@@ -8,12 +8,13 @@ This is a repo designed to host a timed quiz relating to basic coding knowledge.
 
 - This is a timed quiz, in which you get 60 seconds to answer all the question.
 - If the timer runs out, the questions will be marked as incorrect.
-- If a question is answered incorrectly, the user will be penalized by 3 seconds. This penalization will continue for each subsequent incorrect answer.
+- Your timer will be deducted 3 seconds for each wrong answer.
+- Once the quiz is over, you will be asked to enter your initials to save your score.
 - Follow the prompts to take the quiz and keep an eye on that timer. Good luck!
 
 ## Preview Image
 
-<img src=''>
+<img src='./assets/preview.png' alt='quiz preview'>
 
 ## Deployed Link
 
