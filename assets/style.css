@@ -8,19 +8,20 @@ body {
 }
 
 #page {
-  background-color: gainsboro;
+  background-color: #eeeeee;
   min-height: 100vh;
   padding: 0px;
 }
 
 #heading {
-  background-color: teal;
+  background-color: #e27d60;
   color: aliceblue;
   padding: 15px;
 }
 
 #subheading {
-  background-color: powderblue;
+  background-color: #85dcb1;
+  color: aliceblue;
   padding: 15px;
 }
 
@@ -59,7 +60,8 @@ h2 {
   padding: 0;
 }
 #question .card-body {
-  background-color: blanchedalmond;
+  background-color: #dddddd;
+  color: black;
   margin: 0;
 }
 #question {
@@ -81,27 +83,19 @@ h2 {
   flex-wrap: wrap;
 }
 
-.btn-lg {
-  margin: 10px;
-  clear: both;
-}
-
-.btn-lg:disabled {
-  background-color: grey;
-}
-
-#highScores {
-  background-color: lightsteelblue;
-  padding: 20px;
+#highScoresContainer {
+  padding: 50px;
+  background-color: #85dcb1;
 }
 
 footer {
-  background-color: teal;
+  background-color: #e27d60;
   color: aliceblue;
   text-align: center;
   text-decoration: wavy;
   position: fixed-bottom;
 }
+
 #footText {
   margin: 0;
 }
