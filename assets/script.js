@@ -36,12 +36,17 @@ var b3 = document.getElementById("3");
 var b4 = document.getElementById("4");
 var options = document.getElementById("options");
 var score = 0;
-var highScores = document.getElementById("highScores");
-var newInitials = document.getElementById("initials");
-console.log(newInitials);
-var newHighScores = document.getElementById("hScores");
-console.log(newHighScores);
+var highScoresContainer = document.getElementById("highScoresContainer");
+var initialsList = document.getElementById("initialsList");
+// console.log(newInitials);
+var highScoresList = document.getElementById("hScoresList");
+var choices = document.getElementById('choices');
+// console.log(newHighScores);
 var initials = "";
+var initArray = [];
+var scoreArray = [];
+var f = "";
+var g = "";
 
 var array = [0,1,2,3];
 // Following function 'shuffleArray' is a modification or the Fisher-Yates algorithm, sometimes attributed as the Durstenfeld algorithm. 
@@ -100,8 +105,95 @@ function next() {
     assignChoices();
 };
 
+function disableStart() { 
+    startButton.style.display = "none";
+    startIns.style.display = "none";
+};
 
-var choices = document.getElementById('choices');
+function enableButtons() {
+    options.style.display = "block";
+};
+
+function getInitials(){
+    initials = prompt("Enter Your Initials.");
+    while (!(initials.length === 2)) {
+        initials = prompt("Please enter 2 characters");
+    }
+        alert("Thanks.");
+        console.log(initials);
+        return;
+    };
+
+function writePrevScore(){
+    var storedHighScores = [];
+    storedHighScores = JSON.parse(localStorage.getItem("score"));
+    console.log(storedHighScores);
+    console.log(storedHighScores.length);
+    for (hs=0; hs < storedHighScores.length; hs++) {
+    var previousScores = document.createElement("li");
+    previousScores.textContent = storedHighScores[hs];
+    highScoresList.appendChild(previousScores);
+    };
+};
+
+
+function writePrevInits (){
+    var storedInits = [];
+    storedInits = JSON.parse(localStorage.getItem("initials"));
+    console.log(storedInits);
+    console.log(storedInits.length);
+
+    for (si=0; si < storedInits.length; si++){
+    var previousInitials = document.createElement("li");
+    previousInitials.textContent = storedInits[si];
+    initialsList.appendChild(previousInitials);
+    };
+};
+
+function writeNewScore(){
+    // let newHighScore = document.createElement("li");
+    // newHighScore.textContent = score;
+    // console.log(score);
+    // highScoresList.appendChild(newHighScore);
+    // localStorage.setItem("highScore", score);
+    scoreArray = JSON.parse(localStorage.getItem("score")) || [];
+    scoreArray.push(score);
+    console.log(scoreArray);
+    localStorage.setItem('score', JSON.stringify(scoreArray));
+    var localScores = JSON.parse(localStorage.getItem("score"));
+    console.log(localScores);
+};
+
+function writeNewInits(){
+    // let newInitials = document.createElement("li");
+    // newInitials.textContent = initials;
+    // console.log(initials);
+    // initialsList.appendChild(newInitials); 
+    // localStorage.setItem('user', initials);
+    initArray = JSON.parse(localStorage.getItem("initials")) || [];
+    initArray.push(initials);
+    console.log(initArray);
+    localStorage.setItem('initials', JSON.stringify(initArray));
+    var localInits = JSON.parse(localStorage.getItem("initials"));
+    console.log(localInits);
+};
+
+function writeHighScore (){
+    writeNewInits();
+    writeNewScore();
+
+    writePrevInits();
+    writePrevScore();
+};
+
+function quizOver() {
+    questionNumber.innerHTML = "Quiz Over!";
+    questionContent.innerHTML = "Your score is "+ score +" out of 10";
+    options.style.display = "none";
+    highScoresContainer.style.display = "block";
+    getInitials();
+    writeHighScore();
+};
 
 choices.addEventListener('click', (event) => {
     var isButton = event.target.nodeName === "BUTTON";
@@ -127,51 +219,10 @@ choices.addEventListener('click', (event) => {
                 } else {
                 timeLeft = timeLeft - 3;
                 };
-    quizOver();
-}
-}
+            quizOver();
+        }
+    }
 );
-
-
-function quizOver() {
-    questionNumber.innerHTML = "Quiz Over!";
-    questionContent.innerHTML = "Your score is "+ score +" out of 10";
-    options.style.display = "none";
-    highScores.style.display = "block";
-    getInitials();
-    writeHighScore();
-};
-
-function disableStart() { 
-    startButton.style.display = "none";
-    startIns.style.display = "none";
-};
-
-function enableButtons() {
-    options.style.display = "block";
-};
-
-function getInitials(){
-    initials = prompt("Enter Your Initials.");
-    if (initials.length === 2){
-        alert("Thanks.");
-        console.log(initials);
-    } else {
-        prompt("Please enter 1 or 2 characters.");
-        getInitials();
-    };
-};
-
-function writeHighScore (){
-let pInitials = document.createElement("p");
-pInitials.innerHTML = initials;
-console.log(initials);
-newInitials.appendChild(pInitials);
-
-let pHighScore = document.createElement("p");
-pHighScore.innerHTML = score;
-newHighScores.appendChild(pHighScore);
-};
 
 startButton.addEventListener('click', disableStart);
 startButton.addEventListener('click', countdown);
