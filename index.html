@@ -21,60 +21,63 @@
             </div>
         </section>
 
-        <section class="container-fluid" id="intro">
-            <div class="row">
-                <div class="col-sm-6" id="instruction">
-                    <p>There are 10 questions in total.</p>
-                    <p>You have 60 seconds in total to finish the quiz. </p>
-                    <p>Keep an eye on that timer! You will lose 3 seconds for each wrong answer.</p>
-                    <p id="startIns">When you're ready, press START to begin. Good luck!</p>
-                    <p class="btn btn-primary btn-sm btn-block" id="startButton">START</p>
-                </div>
-                <div class="col-sm-6">
-                    <div class="card" id="timer" style="width: 18rem;">
-                        <img class="card-img-top responsive" src="https://images.unsplash.com/photo-1541480601022-2308c0f02487?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=3450&q=80" alt="Image of an alarm clock">
-                        <div class="card-body">
-                            <p class="card-text" id="countdown">Countdown!</p>
-                        </div>
+    <section class="container-fluid" id="intro">
+        <div class="row">
+            <div class="col-sm-6" id="instruction">
+                <p>There are 10 questions in total.</p>
+                <p>You have 60 seconds in total to finish the quiz. </p>
+                <p>Keep an eye on that timer! You will lose 3 seconds for each wrong answer.</p>
+                <p id="startIns">When you're ready, press START to begin. Good luck!</p>
+                <p class="btn btn-primary btn-sm btn-block" id="startButton">START</p>
+            </div>
+            <div class="col-sm-6">
+                <div class="card" id="timer" style="width: 18rem;">
+                    <img class="card-img-top responsive" src="https://images.unsplash.com/photo-1541480601022-2308c0f02487?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=3450&q=80" alt="Image of an alarm clock">
+                    <div class="card-body">
+                        <p class="card-text" id="countdown">Countdown!</p>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section class="container-fluid row" id="question">
-            <div class="card" id="card">
-                <div class="card-body">
-                    <h5 class="card-title" id="qNumber">Question  X</h5>
-                    <p class="card-text" id="qContent" >Actual question here?</p>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="container-fluid row"  style="display: none;" id="options">
-            <div class="col-sm-12">
-                <div id="choices">
-                    <button type="button" class="btn btn-primary btn-lg btn-block" id="1">Press</button>
-                    <button type="button" class="btn btn-primary btn-lg btn-block" id="2">The</button>
-                    <button type="button" class="btn btn-primary btn-lg btn-block" id="3">Start</button>
-                    <button type="button" class="btn btn-primary btn-lg btn-block" id="4">Button!</button>
-                </div>
-            </div>
-        </section>
-
-        <section class="container" style="display: none;" id="highScores">
-            <div class="row" id="highScoreTable">
-                <div class="col-sm-6" id="initials">Initials</div>
-                <div class="col-sm-6" id="hScores">High Score</div>
-            </div>
-        </section>
-
-        <footer class="footer fixed-bottom">
-            <div class="container-fluid">
-                <p id="footText"></p>
-            </div>
-        </footer>
+        </div>
     </section>
+
+    <section class="container-fluid row" id="question">
+        <div class="card" id="card">
+            <div class="card-body">
+                <h5 class="card-title" id="qNumber">Press Start.</h5>
+                <p class="card-text" id="qContent" >Ready. Set. Caffeine. Go!</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid row"  style="display: none;" id="options">
+        <div class="col-sm-12">
+            <div id="choices">
+                <button type="button" class="btn btn-primary btn-lg btn-block" id="1">Press</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block" id="2">The</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block" id="3">Start</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block" id="4">Button!</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid" style="display: none;" id="highScoresContainer">
+        <div class="row" id="highScoreTable">
+            <div class="col-sm-6" style="float: right;">
+                <ol id="initialsList">Initials</ol>
+            </div>
+            <div class="col-sm-6" style="float: left;">
+                <ul id="hScoresList">High Score</ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer fixed-bottom">
+        <div class="container-fluid">
+            <p id="footText">"Testing leads to failure, and failure leads to understanding." _Burt Rutan</p>
+        </div>
+    </footer>
+
     <script src="./assets/script.js"></script>
 </body>
 </html>
