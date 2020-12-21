@@ -4,7 +4,7 @@ var questions = [
     "Which one of the following is a self-closing element?",
     "Which one of the following is NOT a semantic tag in HTML?",
     "In CSS, which is the outermost part of the box model?",
-    "Which of the following is an example of 'object' in Javascript?",
+    "Which of the following is an example of 'object property' in Javascript?",
     "In Javascript, the Math.random function would NOT generate the following...",
     "In the array ['fruits', 'vegetables', 'meats', 'breads'], what is the index of 'fruits'?",
     "Which one of the following can NOT be used to store a variable in Javascript?",
@@ -30,23 +30,22 @@ var questionContent = document.getElementById("qContent");
 var choiceList = document.getElementById("choices");
 var startIns = document.getElementById("startIns");
 var startButton = document.getElementById("startButton");
-var b1 = document.getElementById("1");
-var b2 = document.getElementById("2");
-var b3 = document.getElementById("3");
-var b4 = document.getElementById("4");
+var b1 = document.getElementById("b1");
+var b2 = document.getElementById("b2");
+var b3 = document.getElementById("b3");
+var b4 = document.getElementById("b4");
 var options = document.getElementById("options");
 var score = 0;
 var highScoresContainer = document.getElementById("highScoresContainer");
 var initialsList = document.getElementById("initialsList");
-// console.log(newInitials);
 var highScoresList = document.getElementById("hScoresList");
 var choices = document.getElementById('choices');
-// console.log(newHighScores);
 var initials = "";
 var initArray = [];
 var scoreArray = [];
-var f = "";
-var g = "";
+var qNum = 1;
+var qText = 0;
+let ansNum = 0;
 
 var array = [0,1,2,3];
 // Following function 'shuffleArray' is a modification or the Fisher-Yates algorithm, sometimes attributed as the Durstenfeld algorithm. 
@@ -54,33 +53,28 @@ var array = [0,1,2,3];
 // Fisher Yates (Knuth) algorithm link = https://github.com/Daplie/knuth-shuffle
 // Durstenfeld algorithm reference (wikipedia) = https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
 function shuffleArray() {
-    for (let k = array.length - 1; k > 0; k--) {
-        let j = Math.floor(Math.random() * (k + 1));
-        [array[k], array[j]] = [array[j], array[k]];
+    for (let a = array.length - 1; a > 0; a--) {
+        let b = Math.floor(Math.random() * (a + 1));
+        [array[a], array[b]] = [array[b], array[a]];
     };
 };
 
-var q = 1;
-var i = 0;
-let v = 0;
-
 function nextQuestion() {
-        questionNumber.innerHTML = "Question " + q;
-        questionContent.innerHTML = questions[i];
-        i++;
+        questionNumber.innerHTML = "Question " + qNum;
+        questionContent.innerHTML = questions[qText];
+        qText++;
 };
-
 
 function assignChoices () {
     var ai = array[0];
     var bi = array[1];
     var ci = array[2];
     var di = array[3];
-    b1.innerHTML = answers[v][ai];
-    b2.innerHTML = answers[v][bi];
-    b3.innerHTML = answers[v][ci];
-    b4.innerHTML = answers[v][di];
-    v++;
+    b1.innerHTML = answers[ansNum][ai];
+    b2.innerHTML = answers[ansNum][bi];
+    b3.innerHTML = answers[ansNum][ci];
+    b4.innerHTML = answers[ansNum][di];
+    ansNum++;
 };
 
 var timeLeft = 60;
@@ -120,15 +114,12 @@ function getInitials(){
         initials = prompt("Please enter 2 characters");
     }
         alert("Thanks.");
-        console.log(initials);
         return;
-    };
+};
 
 function writePrevScore(){
     var storedHighScores = [];
     storedHighScores = JSON.parse(localStorage.getItem("score"));
-    console.log(storedHighScores);
-    console.log(storedHighScores.length);
     for (hs=0; hs < storedHighScores.length; hs++) {
     var previousScores = document.createElement("li");
     previousScores.textContent = storedHighScores[hs];
@@ -136,13 +127,9 @@ function writePrevScore(){
     };
 };
 
-
 function writePrevInits (){
     var storedInits = [];
     storedInits = JSON.parse(localStorage.getItem("initials"));
-    console.log(storedInits);
-    console.log(storedInits.length);
-
     for (si=0; si < storedInits.length; si++){
     var previousInitials = document.createElement("li");
     previousInitials.textContent = storedInits[si];
@@ -151,37 +138,22 @@ function writePrevInits (){
 };
 
 function writeNewScore(){
-    // let newHighScore = document.createElement("li");
-    // newHighScore.textContent = score;
-    // console.log(score);
-    // highScoresList.appendChild(newHighScore);
-    // localStorage.setItem("highScore", score);
     scoreArray = JSON.parse(localStorage.getItem("score")) || [];
     scoreArray.push(score);
-    console.log(scoreArray);
     localStorage.setItem('score', JSON.stringify(scoreArray));
-    var localScores = JSON.parse(localStorage.getItem("score"));
-    console.log(localScores);
+    JSON.parse(localStorage.getItem("score"));
 };
 
 function writeNewInits(){
-    // let newInitials = document.createElement("li");
-    // newInitials.textContent = initials;
-    // console.log(initials);
-    // initialsList.appendChild(newInitials); 
-    // localStorage.setItem('user', initials);
     initArray = JSON.parse(localStorage.getItem("initials")) || [];
     initArray.push(initials);
-    console.log(initArray);
     localStorage.setItem('initials', JSON.stringify(initArray));
-    var localInits = JSON.parse(localStorage.getItem("initials"));
-    console.log(localInits);
+    JSON.parse(localStorage.getItem("initials"));
 };
 
 function writeHighScore (){
     writeNewInits();
     writeNewScore();
-
     writePrevInits();
     writePrevScore();
 };
@@ -201,21 +173,19 @@ choices.addEventListener('click', (event) => {
     return;
     }
     var buttonPressed = event.target.innerHTML;
-    if (q < 10){
+    if (qNum < 10){
         if (correctAnswers.includes(buttonPressed)){
             score++;
-            console.log(score);
-            q++;
+            qNum++;
             next();
             } else {
             timeLeft = timeLeft - 3;
-            q++;
+            qNum++;
             next();
             };
         } else {
             if (correctAnswers.includes(buttonPressed)){
                 score++;
-                console.log(score);
                 } else {
                 timeLeft = timeLeft - 3;
                 };
